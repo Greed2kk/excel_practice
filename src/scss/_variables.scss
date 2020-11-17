@@ -1,8 +1,24 @@
+//Таблиц 
+//высота логических компонентов
 $header-height: 34px;
 $toolbar-height: 34px;
+$formula-height: 27px;
+//рамки
 $border-color: rgba(0, 0, 0, 0.12);
 $border-hover: 2px solid rgba(0, 0, 0, 0.20);
 $border-focus: rgba(36, 110, 36, 0.555);
+//события на кнопках
 $button-focus: rgba(16, 230, 33, 0.267);
 $button-click: rgb(10, 250, 30);
-;
+//строки
+$row-height: 24px;
+//ячейки и столбцы
+$info-cell-width: 40px;
+$cell-width: 120px;
+$cell-color-bg: #f8f9fa;
+$cell-border-color: #e2e3e3;
+//цвет шрифта
+$default-font-color: rgba(138, 135, 135, 0.452);
+
+//главное меню
+$db-header-height: 64px;

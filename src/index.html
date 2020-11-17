@@ -10,54 +10,42 @@
 </head>
 
 <body>
-  <div id="app" class="container">
-    <div class="exel">
-      <!-- Шапка-->
-      <div class="excel__header">
-        <input class="header__input" type="text" value="Название таблицы"></input>
-        <div class="header__buttons">
-          <div class="button-delete">
-            <span class="material-icons">delete </span>
-          </div>
-          <div class="button-exit">
-            <span class="material-icons">exit_to_app </span>
-          </div>
+  <div id="app">
+    <div class="db">
+
+      <div class="db__header">
+        <h1>Excel</h1>
+      </div>
+
+      <div class="db__new">
+        <div class="db__view">
+        <a href="#" class="db__create">Создать <br> Новую Таблицу</a>
         </div>
       </div>
-      <!-- Панель инструментов-->
-      <div class="excel__toolbar">
-        <div class="toolbar__buttons">
-          <div class="button-format">
-            <span class="material-icons">format_align_left </span>
-          </div>
-          <div class="button-format">
-            <span class="material-icons">format_align_center </span>
-          </div>
-          <div class="button-format">
-            <span class="material-icons">format_align_right </span>
-          </div>
-          <div class="button-format">
-            <span class="material-icons">format_bold </span>
-          </div>
-          <div class="button-format">
-            <span class="material-icons">format_italic</span>
-          </div>
-          <div class="button-format">
-            <span class="material-icons">format_underline </span>
-          </div>
+
+      <div class="db__table db__view">
+        <div class="db__list-header">
+          <span>Название</span>
+          <span>Дата</span>
         </div>
-      </div>
-      <!-- excel формула -->
-      <div class="excel__formula">
+        <ul class="db__list">
+          <li class="db__record">
+            <a href="#" class="record">Таблица 1</a>
+            <strong>12.06.2020</strong>
+          </li>
+        </ul>
 
+        <ul class="db__list">
+          <li class="db__record">
+            <a href="#" class="record">Таблица 1</a>
+            <strong>12.06.2020</strong>
+          </li>
+        </ul>
       </div>
-      <!-- excel таблица -->
-      <div class="excel__table">
-
-      </div>
-
 
     </div>
+  </div>
+
   </div>
 </body>
 

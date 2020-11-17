@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Excel JS</title>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="exel">
+      <!-- Шапка-->
+      <div class="excel__header">
+        <input class="header__input" type="text" value="Название таблицы"></input>
+        <div class="header__buttons">
+          <div class="button-delete">
+            <span class="material-icons">delete </span>
+          </div>
+          <div class="button-exit">
+            <span class="material-icons">exit_to_app </span>
+          </div>
+        </div>
+      </div>
+      <!-- Панель инструментов-->
+      <div class="excel__toolbar">
+        <div class="toolbar__buttons">
+          <div class="button-format">
+            <span class="material-icons">format_align_left </span>
+          </div>
+          <div class="button-format">
+            <span class="material-icons">format_align_center </span>
+          </div>
+          <div class="button-format">
+            <span class="material-icons">format_align_right </span>
+          </div>
+          <div class="button-format">
+            <span class="material-icons">format_bold </span>
+          </div>
+          <div class="button-format">
+            <span class="material-icons">format_italic</span>
+          </div>
+          <div class="button-format">
+            <span class="material-icons">format_underline </span>
+          </div>
+        </div>
+      </div>
+      <!-- excel формула -->
+      <div class="excel__formula">
+        <div class="formula-info">fx</div>
+        <div class="formula-input" contenteditable="true" spellcheck="false"></div>
+      </div>
+      <!-- excel таблица -->
+      <div class="excel__table">
+        <!-- Таблица стоблцы-->
+        <div class="row">
+          <div class="row-info"></div>
+          <div class="row-data">
+            <div class="column">
+              A
+            </div>
+            <div class="column">
+              B
+            </div>
+            <div class="column">
+              C
+            </div>
+          </div>
+        </div>
+
+        <!-- Таблица строки-->
+        <div class="row">
+          <div class="row-info">1</div>
+          <div class="row-data"></div>
+          <div class="cell selected" contenteditable="true" spellcheck="false">A1</div>
+          <div class="cell" contenteditable="true" spellcheck="false">B2</div>
+          <div class="cell">C3</div>
+        </div>
+
+        <div class="row">
+          <div class="row-info">2</div>
+          <div class="row-data"></div>
+          <div class="cell">A1</div>
+          <div class="cell">B2</div>
+          <div class="cell">C3</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

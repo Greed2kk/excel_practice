@@ -14,9 +14,9 @@
   padding: 7px 10px;
   display: flex;
 
-  & .toolbar__buttons {
-    & .button-format {
-        @include button($button-focus, $button-click)
+  .toolbar__buttons {
+    .button-format {
+      @include button($button-focus, $button-click)
     }
   }
 }
