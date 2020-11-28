@@ -29,7 +29,10 @@ const filename = ext =>
   isDev ? `bundle.[hash].${ext}` : `bundle.[hash].${ext}`
 
 const plugins = [
-  new CleanWebpackPlugin(),
+  new CleanWebpackPlugin({
+    cleanStaleWebpackAssets: true,
+    dry: false,
+  }),
   new HTMLWebpackPlugin({
     template: 'index.html',
     minify: {
@@ -72,6 +75,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@core': path.resolve(__dirname, 'src/core'),
+      '@components': path.resolve(__dirname, 'src/components'),
     },
   },
   devtool: isDev ? 'source-map' : false,
@@ -81,7 +85,7 @@ module.exports = {
     port: 8000,
     hot: true,
     open: true,
-    writeToDisk: true,
+    //writeToDisk: true,
   },
   plugins,
   module: {
