@@ -58,7 +58,6 @@ class Dom {
 
   css(styles = {}) {
     Object.keys(styles).forEach(key => {
-      debugger
       this.$el.style[key] = styles[key]
     })
   }

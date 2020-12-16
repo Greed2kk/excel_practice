@@ -2,6 +2,7 @@
 @import "mixins";
 
 .excel__table {
+  user-select: none;
   position: absolute;
   left: 0;
   right: 0;
@@ -73,9 +74,10 @@
     right: 0;
     opacity: 0;
     background: $border-focus;
+    z-index: 1000;
 
     &:hover {
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
 
