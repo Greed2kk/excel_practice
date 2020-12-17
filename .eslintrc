@@ -43,7 +43,8 @@
       "no-plusplus": "off",
       "no-unused-expressions": "off",
       "no-continue": "off",
-      "default-case": "off"
+      "default-case": "off",
+      "no-return-assign": "off"
     },
     "settings": {
       "import/resolver": {
