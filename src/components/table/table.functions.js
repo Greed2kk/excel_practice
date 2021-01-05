@@ -19,3 +19,28 @@ export function matrix($target, $current) {
     return acc
   }, [])
 }
+
+export function nextSelector(key, { col, row }) {
+  const MIN_VALUE = 0
+  switch (key) {
+    case 'Enter':
+    case 'ArrowDown':
+      // eslint-disable-next-line no-param-reassign
+      row++
+      break
+    case 'Tab':
+    case 'ArrowRight':
+      // eslint-disable-next-line no-param-reassign
+      col++
+      break
+    case 'ArrowLeft':
+      // eslint-disable-next-line no-param-reassign
+      col = col - 1 < MIN_VALUE ? MIN_VALUE : col - 1
+      break
+    case 'ArrowUp':
+      // eslint-disable-next-line no-param-reassign
+      row = row - 1 < MIN_VALUE ? MIN_VALUE : row - 1
+      break
+  }
+  return `[data-id="${row}:${col}"]`
+}
