@@ -33,7 +33,7 @@ export class Table extends ExcelComponent {
     super.init()
     const $cell = this.$root.find('[data-id="0:0"]')
     this.selection.select($cell)
-    this.emitter.subscribe('it is working', text => {
+    this.$on('formula:input', text => {
       this.selection.current.text(text)
     })
   }

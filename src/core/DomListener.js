@@ -3,6 +3,7 @@ import { capitalize } from './utils'
 function getMethodName(eventName) {
   return `on${capitalize(eventName)}`
 }
+
 export class DomListener {
   constructor($root, listeners = []) {
     if (!$root) {

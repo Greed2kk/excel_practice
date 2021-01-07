@@ -21,6 +21,6 @@ export class Formula extends ExcelComponent {
   onInput(event) {
     // eslint-disable-next-line no-console
     const text = event.target.textContent.trim()
-    this.emitter.emit('it is working', text)
+    this.$emit('formula:input', text)
   }
 }
