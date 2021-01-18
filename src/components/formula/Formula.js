@@ -34,6 +34,10 @@ export class Formula extends ExcelComponent {
     this.$on('table:input', $cell => {
       this.$formula.text($cell.text())
     })
+    this.$subscribe(state => {
+      // eslint-disable-next-line no-console
+      console.log('formulas state', state)
+    })
   }
 
   onKeydown(e) {
