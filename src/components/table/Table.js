@@ -8,7 +8,6 @@ import {
   nextSelector,
   shouldResize,
 } from '@components/table/table.functions'
-import * as actions from '@/redux/actions'
 import { createTable } from './table.template'
 
 export class Table extends ExcelComponent {
@@ -23,7 +22,7 @@ export class Table extends ExcelComponent {
   }
 
   toHTML() {
-    return createTable(20, this.store.getState())
+    return createTable(20)
   }
 
   prepare() {
@@ -35,22 +34,26 @@ export class Table extends ExcelComponent {
     this.selectCell(this.$root.find('[data-id="0:0"]'))
     this.$on('formula:input', text => {
       this.selection.current.text(text)
-      this.updateTextStore(text)
     })
     this.$on('formula:done', () => {
       this.selection.current.focus()
     })
+    this.$subscribe(state => {
+      // eslint-disable-next-line no-console
+      console.log('table state', state)
+    })
   }
 
   selectCell($cell) {
-    this.selection.select($cell)
     this.$emit('table:select', $cell)
+    this.selection.select($cell)
+    this.$dispatch({ type: 'Test' })
   }
 
   async resizeTable(e) {
     try {
       const data = await resizeHandler(this.$root, e)
-      this.$dispatch(actions.tableResize(data))
+      this.$dispatch({ type: 'TABLE_RESIZE', data })
     } catch (error) {
       console.warn('Resize error', error.message)
     }
@@ -91,17 +94,8 @@ export class Table extends ExcelComponent {
     }
   }
 
-  updateTextStore(value) {
-    this.$dispatch(
-      actions.inputText({
-        id: this.selection.current.id(),
-        value,
-      })
-    )
-  }
-
   onInput(e) {
-    this.updateTextStore($(e.target).text())
+    this.$emit('table:input', $(e.target))
   }
 
   // onMouseup(e) {

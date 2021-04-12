@@ -48,8 +48,7 @@ export function resizeHandler($root, e) {
 
       resolve({
         value,
-        type,
-        id: $parent.data[type],
+        id: type === 'col' ? $parent.data.col : null,
       })
       $resizer.css({
         opacity: 0,
