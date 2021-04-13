@@ -1,6 +1,7 @@
 import {
   APPLY_STYLE,
   CHANGE_STYLES,
+  CHANGE_TITLE,
   INPUT_TEXT,
   TABLE_RESIZE,
 } from '@/redux/types'
@@ -44,6 +45,8 @@ export function rootReducer(state, action) {
           ...action.data.value,
         },
       }
+    case CHANGE_TITLE:
+      return { ...state, currentTitle: action.data }
     default:
       return state
   }
