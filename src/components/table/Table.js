@@ -2,6 +2,7 @@ import { TableSelection } from '@components/table/TableSelection'
 import { $ } from '@core/dom'
 import { ExcelComponent } from '@core/ExcelComponent'
 import { resizeHandler } from '@components/table/table.resize'
+import { defaultStyles } from '@/constants'
 import {
   isCell,
   matrix,
@@ -40,11 +41,24 @@ export class Table extends ExcelComponent {
     this.$on('formula:done', () => {
       this.selection.current.focus()
     })
+    this.$on('toolbar:applyStyle', value => {
+      this.selection.applyStyle(value)
+      this.$dispatch(
+        actions.applyStyle({
+          value,
+          ids: this.selection.selectedIds,
+        })
+      )
+    })
   }
 
   selectCell($cell) {
     this.selection.select($cell)
     this.$emit('table:select', $cell)
+    const styles = $cell.getStyles(
+      Object.keys(defaultStyles)
+    )
+    this.$dispatch(actions.changeStyles(styles))
   }
 
   async resizeTable(e) {
@@ -57,6 +71,9 @@ export class Table extends ExcelComponent {
   }
 
   onMousedown(e) {
+    /* TODO:
+    Добавть возможность зажимая ЛКМ выделять несколько ячееек без шифта
+     */
     if (shouldResize(e)) {
       this.resizeTable(e)
     } else if (isCell(e)) {

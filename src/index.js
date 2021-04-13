@@ -9,6 +9,9 @@ import './scss/index.scss'
 import { createStore } from '@core/createStore'
 import { storage } from '@core/utils'
 
+/* TODO:
+ Написать JSDoc
+ */
 const store = createStore(rootReducer, initialState)
 
 store.subscribe(state => {
