@@ -3,6 +3,7 @@ import {
   TABLE_RESIZE,
   CHANGE_STYLES,
   APPLY_STYLE,
+  CHANGE_TITLE,
 } from '@/redux/types'
 
 // action creator
@@ -37,6 +38,18 @@ export function changeStyles(data) {
 export function applyStyle(data) {
   return {
     type: APPLY_STYLE,
+    data,
+  }
+}
+
+/**
+ * Изменять title
+ * @param data {string}
+ * @returns {object} {type, data}
+ */
+export function changeTitle(data) {
+  return {
+    type: CHANGE_TITLE,
     data,
   }
 }
