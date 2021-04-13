@@ -42,3 +42,16 @@ export function linearStyles(styles = {}) {
     .map(key => `${camelToDash(key)}: ${styles[key]}`)
     .join(';')
 }
+
+export function debounce(fn, wait) {
+  let timeout
+  // eslint-disable-next-line func-names
+  return function (...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      fn.apply(this, args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
+}
