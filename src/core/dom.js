@@ -1,4 +1,10 @@
+export function $(selector) {
+  return new Dom(selector)
+}
+
 class Dom {
+  $el
+
   constructor(selector) {
     this.$el =
       typeof selector === 'string'
@@ -83,6 +89,17 @@ class Dom {
     return this
   }
 
+  get parentNode() {
+    return $(this.$el.parentNode)
+  }
+
+  getStyles(styles = []) {
+    return styles.reduce((res, s) => {
+      res[s] = this.$el.style[s]
+      return res
+    }, {})
+  }
+
   removeClass(className) {
     this.$el.classList.remove(className)
     return this
@@ -103,10 +120,6 @@ class Dom {
     this.$el.focus()
     return this
   }
-}
-
-export function $(selector) {
-  return new Dom(selector)
 }
 
 $.create = (tagName, className = '') => {
