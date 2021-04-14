@@ -6,3 +6,14 @@ export const defaultStyles = {
 }
 
 export const defaultTitle = 'Новая Таблица'
+
+export const DEFAULT_WIDTH = 120
+export const DEFAULT_HEIGHT = 24
+/*
+ * todo: Добавить динамическое увелечине размерности исходя из положения скрола
+ */
+export const defaultRowsCount = 60
+export const CODES = {
+  A: 65,
+  Z: 90,
+}

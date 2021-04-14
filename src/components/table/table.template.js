@@ -1,14 +1,11 @@
-import { defaultStyles } from '@/constants'
+import {
+  CODES,
+  DEFAULT_HEIGHT,
+  DEFAULT_WIDTH,
+  defaultStyles,
+} from '@/constants'
 import { parse } from '@core/parse'
 import { linearStyles } from '@core/utils'
-
-const CODES = {
-  A: 65,
-  Z: 90,
-}
-
-const DEFAULT_WIDTH = 120
-const DEFAULT_HEIGHT = 24
 
 function getWidth(state, index) {
   return `${state[index] || DEFAULT_WIDTH}px`
