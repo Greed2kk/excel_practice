@@ -10,6 +10,7 @@ import {
   shouldResize,
 } from '@components/table/table.functions'
 import * as actions from '@/redux/actions'
+import { parse } from '@core/parse'
 import { createTable } from './table.template'
 
 export class Table extends ExcelComponent {
@@ -35,7 +36,9 @@ export class Table extends ExcelComponent {
     super.init()
     this.selectCell(this.$root.find('[data-id="0:0"]'))
     this.$on('formula:input', text => {
-      this.selection.current.text(text)
+      this.selection.current
+        .attr('data-value', text)
+        .text(parse(text))
       this.updateTextStore(text)
     })
     this.$on('formula:done', () => {
@@ -119,7 +122,15 @@ export class Table extends ExcelComponent {
 
   onInput(e) {
     this.updateTextStore($(e.target).text())
+    this.selection.current.attr(
+      'data-value',
+      $(e.target).text()
+    )
   }
+
+  /**
+   * @todo Написать обработку события hover у ячеек, отрисовывать размытый фокус
+   */
 
   // onMouseup(e) {
   //   if (isCell(e)) {
