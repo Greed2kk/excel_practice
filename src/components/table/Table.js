@@ -2,7 +2,10 @@ import { TableSelection } from '@components/table/TableSelection'
 import { $ } from '@core/dom'
 import { ExcelComponent } from '@core/ExcelComponent'
 import { resizeHandler } from '@components/table/table.resize'
-import { defaultStyles } from '@/constants'
+import {
+  defaultRowsCount,
+  defaultStyles,
+} from '@/constants'
 import {
   isCell,
   matrix,
@@ -25,7 +28,10 @@ export class Table extends ExcelComponent {
   }
 
   toHTML() {
-    return createTable(20, this.store.getState())
+    return createTable(
+      defaultRowsCount,
+      this.store.getState()
+    )
   }
 
   prepare() {
