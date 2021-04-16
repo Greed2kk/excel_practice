@@ -15,6 +15,9 @@ function getHeight(state, index) {
   return `${state[index] || DEFAULT_HEIGHT}px`
 }
 
+/**
+ * todo: Добавить перенос текста в ячейках, если он выходит за границы
+ */
 function toCell(state, row) {
   // eslint-disable-next-line func-names
   return function (_, col) {

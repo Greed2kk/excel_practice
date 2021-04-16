@@ -1,3 +1,5 @@
+import { clone } from '@core/utils'
+
 export function createStore(
   rootReducer,
   initialState = {}
@@ -24,7 +26,7 @@ export function createStore(
       listeners.forEach(listener => listener(state))
     },
     getState() {
-      return JSON.parse(JSON.stringify(state))
+      return clone(state)
     },
   }
 }
