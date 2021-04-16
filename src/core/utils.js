@@ -55,3 +55,16 @@ export function debounce(fn, wait) {
     timeout = setTimeout(later, wait)
   }
 }
+
+export function clone(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+export function localeDateTime(dataDate) {
+  const date = new Date(dataDate)
+  return `${date.toLocaleDateString()} -
+    ${date.toLocaleTimeString('Russia', {
+      hour: 'numeric',
+      minute: 'numeric',
+    })}`
+}
