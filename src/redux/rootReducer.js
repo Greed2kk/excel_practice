@@ -4,6 +4,7 @@ import {
   CHANGE_TITLE,
   INPUT_TEXT,
   TABLE_RESIZE,
+  UPDATE_DATE,
 } from '@/redux/types'
 
 function value(state, field, action) {
@@ -47,6 +48,8 @@ export function rootReducer(state, action) {
       }
     case CHANGE_TITLE:
       return { ...state, currentTitle: action.data }
+    case UPDATE_DATE:
+      return { ...state, openedDate: new Date().toJSON() }
     default:
       return state
   }

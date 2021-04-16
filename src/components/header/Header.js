@@ -3,6 +3,7 @@ import { changeTitle } from '@/redux/actions'
 import { createHeader } from '@components/header/header.template'
 import { $ } from '@core/dom'
 import { ExcelComponent } from '@core/ExcelComponent'
+import { ActiveRoute } from '@core/routes/ActiveRoute'
 import { debounce } from '@core/utils'
 
 export class Header extends ExcelComponent {
@@ -11,7 +12,7 @@ export class Header extends ExcelComponent {
   constructor($root, options) {
     super($root, {
       name: 'Header',
-      listeners: ['input'],
+      listeners: ['input', 'click'],
       ...options,
     })
   }
@@ -29,5 +30,27 @@ export class Header extends ExcelComponent {
   onInput(e) {
     const $target = $(e.target)
     this.$dispatch(changeTitle($target.text()))
+  }
+
+  /**
+   * todo: переписать этот кусок
+   */
+  onClick(e) {
+    const $target = $(e.target)
+    switch ($target.data.button) {
+      case 'remove':
+        // eslint-disable-next-line no-restricted-globals,no-case-declarations,no-alert
+        const decision = confirm(
+          'Are you sure you want to remove this table?'
+        )
+        if (decision) {
+          localStorage.removeItem(
+            `excel-${ActiveRoute.params[1]}`
+          )
+        }
+      // eslint-disable-next-line no-fallthrough
+      case 'exit':
+        ActiveRoute.navigate('')
+    }
   }
 }
