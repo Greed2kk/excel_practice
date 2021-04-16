@@ -1,5 +1,7 @@
 const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {
+  CleanWebpackPlugin,
+} = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -49,8 +51,17 @@ const plugins = [
     ],
   }),
   new MiniCssExtractPlugin({
-    filename: isDev ? '[name].css' : '[name].[contenthash].css',
-    chunkFilename: isDev ? '[id].css' : '[id].[contenthash].css',
+    filename: isDev
+      ? '[name].css'
+      : '[name].[contenthash].css',
+    chunkFilename: isDev
+      ? '[id].css'
+      : '[id].[contenthash].css',
+  }),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(
+      process.env.NODE_ENV
+    ),
   }),
 ]
 
@@ -75,7 +86,10 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@core': path.resolve(__dirname, 'src/core'),
-      '@components': path.resolve(__dirname, 'src/components'),
+      '@components': path.resolve(
+        __dirname,
+        'src/components'
+      ),
     },
   },
   devtool: isDev ? 'source-map' : false,

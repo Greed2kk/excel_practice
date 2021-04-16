@@ -31,7 +31,7 @@ export function createRecordsTable() {
     return `<p> Созданных записей нет</p>`
   }
   return ` <span>Название</span>
-        <span>Дата</span>
+        <span style="position: relative; right: 3%">Дата</span>
       </div>
       <ul class="db__list">
         ${keys.map(toHtml).join('')}

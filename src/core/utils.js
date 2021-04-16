@@ -68,3 +68,7 @@ export function localeDateTime(dataDate) {
       minute: 'numeric',
     })}`
 }
+
+export function preventDefault(e) {
+  e.preventDefault()
+}
