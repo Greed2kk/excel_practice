@@ -11,14 +11,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const isDev = !isProd
 
 const jsLoaders = () => {
-  const loaders = [
-    {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-      },
-    },
-  ]
+  const loaders = ['babel-loader']
 
   if (isDev) {
     loaders.push('eslint-loader')
