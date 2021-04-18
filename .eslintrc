@@ -1,11 +1,12 @@
 {
     "extends": ["airbnb", "prettier"],
-    "plugins": ["prettier", "html"],
+    "plugins": ["prettier", "html", "jest"],
     "parser": "babel-eslint",
     "env": {
       "browser": true,
       "node": true,
       "es2020": true,
+      "jest": true,
       "jquery": true
     },
     "parserOptions": {
