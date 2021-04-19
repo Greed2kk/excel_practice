@@ -15,7 +15,7 @@ export class ExcelPage extends Page {
     super(param)
     this.storeSub = null
     this.processor = new StateProcessor(
-      new LocalStorageClient(this.params)
+      new LocalStorageClient(this.params[1])
     )
   }
 
