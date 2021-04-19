@@ -1,9 +1,9 @@
 import { $ } from '@core/dom'
-import { Page } from '@core/Page'
+import { Page } from '@core/page/Page'
 import { Router } from '@core/routes/Router'
 
 class DashboardPage extends Page {
-  getRoot() {
+  async getRoot() {
     return $.create('div').text('dashboard')
   }
 }
@@ -25,7 +25,6 @@ describe('Router:', () => {
   })
 
   test('should render dashboard Page', () => {
-    router.changePageHandler()
     expect($root.innerHTML).toBe('<div>dashboard</div>')
   })
 })
