@@ -1,3 +1,5 @@
+import { CurrentStorage } from '@core/Storage'
+
 export function capitalize(str) {
   if (typeof str !== 'string') {
     return ''
@@ -16,10 +18,11 @@ export function range(start, end) {
 }
 
 export function storage(key, data = null) {
+  const currentStorage = new CurrentStorage(data?.storage)
   if (!data) {
-    return JSON.parse(localStorage.getItem(key))
+    return JSON.parse(currentStorage.getItem(key))
   }
-  localStorage.setItem(key, JSON.stringify(data))
+  currentStorage.setItem(key, JSON.stringify(data))
   return `Данные успешно записаны`
 }
 

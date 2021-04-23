@@ -15,6 +15,7 @@ export class Header extends ExcelComponent {
       listeners: ['input', 'click'],
       ...options,
     })
+    this.pageBase = options.currentPage
   }
 
   prepare() {
@@ -44,9 +45,11 @@ export class Header extends ExcelComponent {
           'Are you sure you want to remove this table?'
         )
         if (decision) {
-          localStorage.removeItem(
+          this.pageBase.removeItem(
             `excel-${ActiveRoute.params[1]}`
           )
+        } else {
+          break
         }
       // eslint-disable-next-line no-fallthrough
       case 'exit':

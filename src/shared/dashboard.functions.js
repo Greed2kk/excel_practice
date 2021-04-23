@@ -6,18 +6,17 @@ function toHtml(key) {
   const date = model.openedDate
   return `
         <li class="db__record">
-          <a href="#excel/${id}" class="record">${
-    model.currentTitle
-  }</a>
+          <a href="#excel/${id}" class="record">
+            ${model.currentTitle}</a>
           <strong>${localeDateTime(date)}</strong>
         </li>
   `
 }
 
-function getAllKeys() {
+function getAllKeys(store) {
   const keys = []
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i)
+  for (let i = 0; i < store.length; i++) {
+    const key = store.key(i)
     if (key.includes('excel')) {
       keys.push(key)
     }
@@ -25,8 +24,8 @@ function getAllKeys() {
   return keys
 }
 
-export function createRecordsTable() {
-  const keys = getAllKeys()
+export function createRecordsTable(store) {
+  const keys = getAllKeys(store)
   if (!keys.length) {
     return `<p> Созданных записей нет</p>`
   }
@@ -36,4 +35,12 @@ export function createRecordsTable() {
       <ul class="db__list">
         ${keys.map(toHtml).join('')}
       </ul>`
+}
+
+export function createSwitcher() {
+  return `
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>`
 }

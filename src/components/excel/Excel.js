@@ -1,6 +1,7 @@
 import { updateDate } from '@/redux/actions'
 import { $ } from '@core/dom'
 import { Emitter } from '@core/Emitter'
+import { CurrentStorage } from '@core/Storage'
 import { StoreSubscriber } from '@core/StoreSubscriber'
 import { preventDefault } from '@core/utils'
 
@@ -14,9 +15,13 @@ export class Excel {
 
   getRoot() {
     const $root = $.create('div', 'excel')
+    const currentPage = new CurrentStorage(
+      this.store.getState().storage
+    )
     const componentOptions = {
       emitter: this.emitter,
       store: this.store,
+      currentPage,
     }
     this.components = this.components.map(Component => {
       const $el = $.create('div', Component.className)

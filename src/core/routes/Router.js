@@ -22,7 +22,7 @@ export class Router {
       'hashchange',
       this.changePageHandler
     )
-    this.changePageHandler()
+    this.changePageHandler().then()
   }
 
   async changePageHandler() {
